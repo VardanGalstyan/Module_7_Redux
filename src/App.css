@@ -1,3 +1,12 @@
 .navbarLogo {
   width: 45px;
 }
+
+span {
+  cursor: pointer;
+}
+
+.followRed {
+  color: red;
+}
+
