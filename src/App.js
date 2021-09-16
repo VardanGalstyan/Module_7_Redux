@@ -2,7 +2,7 @@ import './App.css';
 import NavBarTop from './components/NavBarTop';
 import Tables from './components/Tables';
 import { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import FavoriteList from './components/FavoriteList';
 
 function App() {
@@ -11,7 +11,11 @@ function App() {
   const [searchValue, setSearchValue] = useState(null)
   const [favoriteJob, setFavoriteJob] = useState([])
   const [categoryValue, setCategoryValue] = useState('')
-  const endpoint = searchValue ? `https://strive-jobs-api.herokuapp.com/jobs?title=${searchValue}&limit=10&offset=${skip}` : categoryValue ? `https://strive-jobs-api.herokuapp.com/jobs?category=${categoryValue}&limit=10&offset=${skip}` : `https://strive-jobs-api.herokuapp.com/jobs?limit=10&offset=${skip} `
+  const endpoint = searchValue
+    ? `https://strive-jobs-api.herokuapp.com/jobs?title=${searchValue}&limit=10&offset=${skip}`
+    : categoryValue
+      ? `https://strive-jobs-api.herokuapp.com/jobs?category=${categoryValue}&limit=10&offset=${skip}`
+      : `https://strive-jobs-api.herokuapp.com/jobs?limit=10&offset=${skip} `
 
   const fetchData = async () => {
     const response = await fetch(endpoint)
@@ -40,7 +44,7 @@ function App() {
           skipValue={skip}
         />}
       />
-      <Route path='/favorites' exact render={(routerProps) => <FavoriteList {...routerProps} jobs = {favoriteJob} />} />
+      <Route path='/favorites' exact render={(routerProps) => <FavoriteList {...routerProps} jobs={favoriteJob} />} />
     </Router>
   );
 }

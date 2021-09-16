@@ -1,14 +1,18 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Form, Row, Col, Container, Table } from 'react-bootstrap'
-import { useState } from 'react'
 import { MdFavorite } from 'react-icons/md'
+import { removeJobs } from '../redux/job/jobActions'
+import { addJobs } from '../redux/job/jobActions'
 
-export default function Tables(props) {
+const mapStateToProps = state => state
 
-    const [asc, setAsc] = useState(false)
-    const [selected, setSelected] = useState(false)
+const mapDispatchToProps = dispatch => ({
+    addFavJobs: (jobToAdd) => dispatch(addJobs(jobToAdd)),
+})
 
-    // const dataSort = asc && 
+
+const Tables = (props) => {
 
     return (
         <Container className="mt-5">
@@ -23,8 +27,8 @@ export default function Tables(props) {
                             <th>
                                 <Form.Control as="select" defaultValue="Choose...">
                                     <option>Job Title...</option>
-                                    <option value='Ascending' onChange={e => setAsc(true)}> sort by ASC </option>
-                                    <option value='Descending' onChange={e => setAsc(false)}> sort by DESC</option>
+                                    <option value='Ascending'> sort by ASC </option>
+                                    <option value='Descending'> sort by DESC</option>
                                 </Form.Control>
                             </th>
                             <th>
@@ -87,8 +91,10 @@ export default function Tables(props) {
                                 <td>{user.candidate_required_location}</td>
                                 <td>{user.publication_date.split("T")[0]}</td>
                                 <td onClick={() => {
-                                   
-                                    props.setFavoriteJob([...props.favoriteJob, user])
+
+                                    // props.setFavoriteJob([...props.favoriteJob, user]
+                                    props.addFavJobs(user)
+
                                 }}><MdFavorite className={props.favoriteJob.some(job => job._id === user._id) ? 'followRed' : 'followWhite'} /></td>
                             </tr>
                         </tbody>
@@ -115,3 +121,6 @@ export default function Tables(props) {
         </Container >
     )
 }
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Tables)

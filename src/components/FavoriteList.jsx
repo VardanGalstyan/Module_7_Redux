@@ -1,23 +1,25 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Container, Row, Card, Button } from 'react-bootstrap'
+import { withRouter } from 'react-router'
 
 
-export default function FavoriteList({ jobs }) {
+const FavoriteList = ({jobs}) => {
     return (
 
         <Container>
             <Row>
                 {jobs && jobs.map(job => {
-                    return <Card className="text-center">
-                        <Card.Header>{job.title}</Card.Header>
+                    return <Card className="text-center mt-3">
+                        <Card.Header>{job.company_name}</Card.Header>
                         <Card.Body>
-                            <Card.Title>{job.company_name}</Card.Title>
+                            <Card.Title>{job.title}</Card.Title>
                             <Card.Text>
-                                {job.description}
+                                {job.candidate_required_location}
                             </Card.Text>
-                            <Button variant="primary">Go somewhere</Button>
+                            <div dangerouslySetInnerHTML={{ __html: job.description }}></div>
+                            <Button variant="primary" onClick={() => window.open(job.url)}>Surf Company Page</Button>
                         </Card.Body>
-                        <Card.Footer className="text-muted">{job.publication_date}</Card.Footer>
+                        <Card.Footer className="text-muted">{job.job_type}</Card.Footer>
                     </Card>
                 })
                 }
@@ -25,3 +27,7 @@ export default function FavoriteList({ jobs }) {
         </Container>
     )
 }
+
+
+
+export default withRouter(FavoriteList)
