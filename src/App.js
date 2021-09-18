@@ -13,9 +13,9 @@ function App() {
   const [categoryValue, setCategoryValue] = useState('')
   const endpoint = searchValue
     ? `https://strive-jobs-api.herokuapp.com/jobs?title=${searchValue}&limit=10&offset=${skip}`
-    : categoryValue
-      ? `https://strive-jobs-api.herokuapp.com/jobs?category=${categoryValue}&limit=10&offset=${skip}`
-      : `https://strive-jobs-api.herokuapp.com/jobs?limit=10&offset=${skip} `
+    :  categoryValue
+    ? `https://strive-jobs-api.herokuapp.com/jobs?category=${categoryValue}&limit=10&offset=${skip}`
+    : `https://strive-jobs-api.herokuapp.com/jobs?limit=10&offset=${skip} `
 
   const fetchData = async () => {
     const response = await fetch(endpoint)

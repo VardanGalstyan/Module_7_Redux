@@ -2,13 +2,16 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Form, Row, Col, Container, Table } from 'react-bootstrap'
 import { MdFavorite } from 'react-icons/md'
+import { addJobs, addToFavoriteActionThunk } from '../redux/job/jobActions'
 import { removeJobs } from '../redux/job/jobActions'
-import { addJobs } from '../redux/job/jobActions'
 
-const mapStateToProps = state => state
+const mapStateToProps = state => ({
+    jobs: state.favorite.jobs
+})
 
 const mapDispatchToProps = dispatch => ({
-    addFavJobs: (jobToAdd) => dispatch(addJobs(jobToAdd)),
+    addFavJobs: (jobToAdd) => dispatch(addToFavoriteActionThunk(jobToAdd)),
+    removeFromFavorite: (index) => dispatch(removeJobs(index))
 })
 
 
@@ -90,12 +93,10 @@ const Tables = (props) => {
                                 <td>{user.job_type}</td>
                                 <td>{user.candidate_required_location}</td>
                                 <td>{user.publication_date.split("T")[0]}</td>
-                                <td onClick={() => {
-
-                                    // props.setFavoriteJob([...props.favoriteJob, user]
-                                    props.addFavJobs(user)
-
-                                }}><MdFavorite className={props.favoriteJob.some(job => job._id === user._id) ? 'followRed' : 'followWhite'} /></td>
+                                <td onClick={() => props.jobs.some((job, i) => job._id === user._id) ? props.removeFromFavorite(user._id) : props.addFavJobs(user)
+                                }>
+                                    <MdFavorite className={props.jobs.some(job => job._id === user._id) ? 'followRed' : 'followWhite'} />
+                                </td>
                             </tr>
                         </tbody>
                     })
