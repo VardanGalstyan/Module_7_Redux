@@ -7,11 +7,68 @@ span {
 }
 
 .followRed {
-  color: red;
+  color: #ffda8f;
 }
 
- /* N A V B A R */
+/* N A V B A R */
 
 .navbar {
   background-color: #ffda8f;
+}
+
+/* J A M B O T R O N */
+
+#jambotron {
+  background-color: #ffda8f;
+  height: 250px;
+  margin-bottom: 30px;
+}
+
+#jambotron .row {
+  align-items: center;
+  padding-top: 50px;
+  justify-content: space-between;
+  display: flex;
+  
+}
+
+#jamboImage {
+  width: 150px;
+}
+
+/* J O B L I S T */
+
+#joblist .row {
+  border-bottom: solid 1px rgba(192, 192, 192, 0.479);
+  margin-top: 7px;
+}
+
+#offset span {
+  border-radius: 12px;
+  background-color: #ffda8f;
+  color: rgb(8, 8, 8);
+  width: 100px;
+  padding: 5px;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+#offset span:hover {
+  background-color: #ffda8f93;
+}
+
+/* LOADER */
+.gsCfrG, .zEDqB, .ctiAfi {
+  border-color: #ffda8f !important;
+}
+
+
+
+
+@media (max-width: 768px) {
+  .hideOnMobile {
+    display: none;
+  }
 }

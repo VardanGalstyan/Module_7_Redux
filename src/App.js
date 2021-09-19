@@ -6,6 +6,9 @@ import { useEffect } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { fillDataBaseAction } from './redux/actions';
+import JobRow from './components/jobs/JobRow';
+import Jambotron from './components/jambotron/Jambotron';
+import Offset from './components/Offset/Offset';
 
 const mapStateToProps = state => ({
   jobs: state.dataBase.stock.data,
@@ -29,9 +32,12 @@ function App({ fetchData, skip, value, input }) {
 
   return (
     <Router>
-      <NavBarTop/>
-      <Route path='/' exact render={() => <Tables/>}/>
-      <Route path='/favorites' exact render={() => <FavoriteList/>} />
+      <NavBarTop />
+      <Jambotron />
+      <Route path='/' exact render={() => <JobRow />} />
+      <Offset />
+      {/* <Route path='/' exact render={() => <Tables />} /> */}
+      <Route path='/favorites' exact render={() => <FavoriteList />} />
     </Router>
   );
 }
