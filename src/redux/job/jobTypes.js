@@ -1,2 +1,5 @@
 export const ADD_JOB = 'ADD_JOB'
 export const REMOVE_JOB = 'REMOVE_JOB'
+export const FILL_DATA = 'FILL_DATA'
+export const FILL_DATA_LOADING = 'FILL_DATA_LOADING'
+export const FILL_DATA_ERROR = 'FILL_DATA_ERROR'

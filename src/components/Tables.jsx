@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Form, Row, Col, Container, Table } from 'react-bootstrap'
 import { MdFavorite } from 'react-icons/md'
-import { addJobs, addToFavoriteActionThunk } from '../redux/job/jobActions'
+import { addToFavoriteActionThunk } from '../redux/job/jobActions'
 import { removeJobs } from '../redux/job/jobActions'
 
 const mapStateToProps = state => ({

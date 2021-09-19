@@ -3,6 +3,9 @@ import { REMOVE_JOB } from './jobTypes.js'
 import { initialState } from './jobStores.js'
 
 
+
+
+
 const jobReducer = (state = initialState.favorite, action) => {
     switch (action.type) {
         case ADD_JOB:

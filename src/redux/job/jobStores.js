@@ -11,7 +11,7 @@ export const initialState = {
     dataBase: {
         stock: [],
         error: false,
-        loading: false
+        loading: true
     }
 }
 
