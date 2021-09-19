@@ -10,3 +10,8 @@ span {
   color: red;
 }
 
+ /* N A V B A R */
+
+#basic-navbar-nav {
+  background-color: #FBFAF4;
+}

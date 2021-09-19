@@ -1,11 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Nav, Navbar, Form, FormControl, Button } from 'react-bootstrap'
 import { withRouter } from 'react-router'
-import { useState } from 'react'
+import { connect } from 'react-redux'
+import { addSearchAction } from '../redux/job/jobActions'
 
-const NavBarTop = ({ setSearch, history }) => {
 
-    const [searchValue, setSearchValue] = useState('')
+const mapStateToProps = state => ({
+    input: state.searchValue.input,
+})
+
+const mapDispatchToProps = dispatch => ({
+    addSearchValue: (index) => dispatch(addSearchAction(index)),
+})
+
+const NavBarTop = ({ history, addSearchValue }) => {
+
+    const [searchBank, setSearchBank] = useState('')
+
 
     return (
         <Navbar bg="light" expand="lg">
@@ -21,20 +32,20 @@ const NavBarTop = ({ setSearch, history }) => {
                         type="text"
                         placeholder="Search"
                         className="mr-sm-2"
-                        value={searchValue}
-                        onChange={e => setSearchValue(e.target.value)}
+                        value={searchBank}
+                        onChange={e => setSearchBank(e.target.value.toLowerCase())}
                         onKeyDown={e => {
                             if (e.key === 'Enter') {
-                                console.log(e.key);
-                                setSearch(searchValue)
+                                e.preventDefault()
+                                addSearchValue(searchBank)
                             }
                         }}
                     />
-                    <Button variant="outline-success" onClick={() => setSearch(searchValue)}>Search</Button>
+                    <Button variant="outline-success" onClick={() => addSearchValue(searchBank)}>Search</Button>
                 </Form>
             </Navbar.Collapse>
         </Navbar>
     )
 }
 
-export default withRouter(NavBarTop)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(NavBarTop))

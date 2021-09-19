@@ -2,16 +2,23 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Form, Row, Col, Container, Table } from 'react-bootstrap'
 import { MdFavorite } from 'react-icons/md'
-import { addToFavoriteActionThunk } from '../redux/job/jobActions'
+import { addOffsetAction, addToFavoriteActionThunk,  addCategoryAction } from '../redux/job/jobActions'
 import { removeJobs } from '../redux/job/jobActions'
 
 const mapStateToProps = state => ({
-    jobs: state.favorite.jobs
+    jobs: state.favorite.jobs,
+    data: state.dataBase.stock.data,
+    skip: state.offset.skip,
+    input: state.searchValue.input,
+    value: state.category.value,
 })
 
 const mapDispatchToProps = dispatch => ({
     addFavJobs: (jobToAdd) => dispatch(addToFavoriteActionThunk(jobToAdd)),
-    removeFromFavorite: (index) => dispatch(removeJobs(index))
+    removeFromFavorite: (index) => dispatch(removeJobs(index)),
+    addOffset: (index) => dispatch(addOffsetAction(index)),
+    addCategory: (index) => dispatch(addCategoryAction(index))
+
 })
 
 
@@ -42,7 +49,7 @@ const Tables = (props) => {
                                 </Form.Control>
                             </th>
                             <th>
-                                <Form.Control as="select" defaultValue="Choose..." onChange={e => props.setCategoryValue(e.target.value)}>
+                                <Form.Control as="select" defaultValue="Choose..." onChange={e => props.addCategory(e.target.value)}>
                                     <option>Category...</option>
                                     <option value='Finance'> Finance </option>
                                     <option value='Human Resources'> Human Resources</option>
@@ -105,16 +112,16 @@ const Tables = (props) => {
             </Row>
             <Row className='justify-content-center my-3'>
                 <Col md={4} className='d-flex justify-content-between'>
-                    <span onClick={() => props.setSkip(0)}>
+                    <span onClick={() => props.addOffset(0)}>
                         First
                     </span>
-                    <span onClick={() => props.setSkip(props.skipValue >= 10 ? props.skipValue - 10 : props.skipValue + 0)}>
+                    <span onClick={() => props.addOffset(props.skip >= 10 ? props.skip - 10 : props.skip + 0)}>
                         Previous
                     </span>
-                    <span onClick={() => props.setSkip(parseInt(props.skipValue) + 10)}>
+                    <span onClick={() => props.addOffset(parseInt(props.skip) + 10)}>
                         Next
                     </span>
-                    <span onClick={() => props.setSkip(1000)}>
+                    <span onClick={() => props.addOffset(1000)}>
                         Last
                     </span>
                 </Col>

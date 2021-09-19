@@ -1,8 +1,15 @@
-import { ADD_JOB } from './jobTypes.js'
-import { REMOVE_JOB } from './jobTypes.js'
-import { FILL_DATA } from './jobTypes'
-import { FILL_DATA_LOADING } from './jobTypes'
-import { FILL_DATA_ERROR } from './jobTypes'
+import {
+        ADD_JOB,
+        ADD_OFFSET,
+        REMOVE_JOB,
+        FILL_DATA,
+        FILL_DATA_LOADING,
+        FILL_DATA_ERROR,
+        ADD_CATEGORY,
+        ADD_SEARCH
+} from './jobTypes.js'
+
+
 
 
 export const removeJobs = (index) => ({
@@ -12,7 +19,7 @@ export const removeJobs = (index) => ({
 
 export const addToFavoriteActionThunk = (jobsToAdd) => {
         return (dispatch, getState) => {
-                console.log('Console logging Something', getState());
+
                 dispatch({
                         type: ADD_JOB,
                         payload: jobsToAdd
@@ -20,17 +27,23 @@ export const addToFavoriteActionThunk = (jobsToAdd) => {
         }
 }
 
-export const fillDataBaseAction = (searchValue, skip, categoryValue) => {
 
-        // const endpoint = searchValue
-        //         ? `https://strive-jobs-api.herokuapp.com/jobs?title=${searchValue}&limit=10&offset=${skip}`
-        //         : categoryValue
-        //         ? `https://strive-jobs-api.herokuapp.com/jobs?category=${categoryValue}&limit=10&offset=${skip}`
-        //         : `https://strive-jobs-api.herokuapp.com/jobs?limit=10&offset=${skip} `
+export const fillDataBaseAction = () => {
+
 
         return async (dispatch, getState) => {
+
+                const { skip } = getState().offset
+                const { input } = getState().searchValue
+                const { value } = getState().category
+
                 try {
-                        let response = await fetch(`https://strive-jobs-api.herokuapp.com/jobs?limit=10&skip=10` )
+                        const endpoint = input
+                                ? `https://strive-jobs-api.herokuapp.com/jobs?title=${input}&limit=10&offset=${skip}`
+                                : value
+                                ? `https://strive-jobs-api.herokuapp.com/jobs?category=${value}&limit=10&offset=${skip}`
+                                : `https://strive-jobs-api.herokuapp.com/jobs?limit=10&offset=${skip} `
+                        let response = await fetch(endpoint)
                         if (response.ok) {
                                 let data = await response.json()
                                 dispatch({
@@ -67,3 +80,33 @@ export const fillDataBaseAction = (searchValue, skip, categoryValue) => {
         }
 }
 
+
+export const addOffsetAction = (offsetToAdd) => {
+        return (dispatch, getState) => {
+
+                dispatch({
+                        type: ADD_OFFSET,
+                        payload: offsetToAdd
+                })
+        }
+}
+
+export const addCategoryAction = (offsetToAdd) => {
+        return (dispatch, getState) => {
+
+                dispatch({
+                        type: ADD_CATEGORY,
+                        payload: offsetToAdd
+                })
+        }
+}
+
+export const addSearchAction = (offsetToAdd) => {
+        return (dispatch, getState) => {
+
+                dispatch({
+                        type: ADD_SEARCH,
+                        payload: offsetToAdd
+                })
+        }
+}

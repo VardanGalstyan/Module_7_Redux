@@ -1,7 +1,10 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import jobReducer from "./jobReducers";
-import dataBaseReducer from "../database/reducersDB";
+import dataBaseReducer from "../reducers/reducersDB";
 import thunk from "redux-thunk";
+import offsetReducer from "../reducers/offsetReducer.js";
+import searchReducer from "../reducers/searchReducer";
+import categoryReducer from "../reducers/categoryReducer";
 
 export const initialState = {
     favorite: {
@@ -12,12 +15,32 @@ export const initialState = {
         stock: [],
         error: false,
         loading: true
+    },
+
+    offset: {
+        skip: "0"
+    },
+
+    searchValue: {
+        input: null
+    },
+
+    category: {
+        value: ''
     }
+
+
 }
+
+// const [searchValue, setSearchValue] = useState(null)
+// const [categoryValue, setCategoryValue] = useState('')
 
 const combinedReducers = combineReducers({
     favorite: jobReducer,
-    dataBase: dataBaseReducer
+    dataBase: dataBaseReducer,
+    offset: offsetReducer,
+    searchValue: searchReducer,
+    category: categoryReducer
 })
 
 const configureJobs = createStore(
