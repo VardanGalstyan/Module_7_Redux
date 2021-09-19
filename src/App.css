@@ -1,5 +1,5 @@
 .navbarLogo {
-  width: 45px;
+  width: 150px;
 }
 
 span {
@@ -12,6 +12,6 @@ span {
 
  /* N A V B A R */
 
-#basic-navbar-nav {
-  background-color: #FBFAF4;
+.navbar {
+  background-color: #ffda8f;
 }

@@ -1,7 +1,7 @@
-import { initialState } from "../job/jobStores";
-import { FILL_DATA } from "../job/jobTypes";
-import { FILL_DATA_LOADING } from "../job/jobTypes";
-import { FILL_DATA_ERROR } from "../job/jobTypes";
+import { initialState } from "../stores";
+import { FILL_DATA } from "../actions/actionTypes";
+import { FILL_DATA_LOADING } from "../actions/actionTypes";
+import { FILL_DATA_ERROR } from "../actions/actionTypes";
 
 
 const dataBaseReducer = (state = initialState.dataBase, action) => {

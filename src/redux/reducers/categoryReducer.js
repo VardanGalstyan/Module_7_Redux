@@ -1,5 +1,5 @@
-import { initialState } from '../job/jobStores.js'
-import { ADD_CATEGORY } from '../job/jobTypes.js'
+import { initialState } from '../stores/index.js'
+import { ADD_CATEGORY } from '../actions/actionTypes.js'
 
 
 

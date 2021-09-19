@@ -1,10 +1,10 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
-import jobReducer from "./jobReducers";
-import dataBaseReducer from "../reducers/reducersDB";
-import thunk from "redux-thunk";
+import jobReducer from "../reducers/jobReducers.js";
+import dataBaseReducer from "../reducers/reducersDB.js";
 import offsetReducer from "../reducers/offsetReducer.js";
-import searchReducer from "../reducers/searchReducer";
-import categoryReducer from "../reducers/categoryReducer";
+import searchReducer from "../reducers/searchReducer.js";
+import categoryReducer from "../reducers/categoryReducer.js";
+import thunk from "redux-thunk";
 
 export const initialState = {
     favorite: {
@@ -31,9 +31,6 @@ export const initialState = {
 
 
 }
-
-// const [searchValue, setSearchValue] = useState(null)
-// const [categoryValue, setCategoryValue] = useState('')
 
 const combinedReducers = combineReducers({
     favorite: jobReducer,

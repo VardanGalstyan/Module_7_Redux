@@ -1,9 +1,6 @@
-import { ADD_JOB } from './jobTypes.js'
-import { REMOVE_JOB } from './jobTypes.js'
-import { initialState } from './jobStores.js'
-
-
-
+import { ADD_JOB } from '../actions/actionTypes.js'
+import { REMOVE_JOB } from '../actions/actionTypes.js'
+import { initialState } from '../stores'
 
 
 const jobReducer = (state = initialState.favorite, action) => {

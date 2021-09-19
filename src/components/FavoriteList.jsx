@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Row, Card, Button } from 'react-bootstrap'
 import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
-import { removeJobs } from '../redux/job/jobActions'
+import { removeJobs } from '../redux/actions'
 
 const mapStateToProps = state => ({
     jobs: state.favorite.jobs

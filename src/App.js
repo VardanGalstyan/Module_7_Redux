@@ -5,7 +5,7 @@ import FavoriteList from './components/FavoriteList';
 import { useEffect } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux';
-import { fillDataBaseAction } from './redux/job/jobActions';
+import { fillDataBaseAction } from './redux/actions';
 
 const mapStateToProps = state => ({
   jobs: state.dataBase.stock.data,

@@ -1,5 +1,5 @@
-import { initialState } from '../job/jobStores.js'
-import { ADD_OFFSET } from '../job/jobTypes.js'
+import { initialState } from '../stores/index.js'
+import { ADD_OFFSET } from '../actions/actionTypes.js'
 
 
 

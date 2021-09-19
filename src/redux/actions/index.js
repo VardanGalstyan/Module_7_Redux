@@ -7,7 +7,7 @@ import {
         FILL_DATA_ERROR,
         ADD_CATEGORY,
         ADD_SEARCH
-} from './jobTypes.js'
+} from './actionTypes.js'
 
 
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Nav, Navbar, Form, FormControl, Button } from 'react-bootstrap'
 import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
-import { addSearchAction } from '../redux/job/jobActions'
+import { addSearchAction } from '../redux/actions'
 
 
 const mapStateToProps = state => ({
@@ -19,8 +19,8 @@ const NavBarTop = ({ history, addSearchValue }) => {
 
 
     return (
-        <Navbar bg="light" expand="lg">
-            <Navbar.Brand href="#home"> <img src="https://www.kindpng.com/picc/m/133-1337806_job-vector-seeker-job-logo-magnifying-glass-png.png" alt="logo" className="navbarLogo" /></Navbar.Brand>
+        <Navbar expand="lg">
+            <Navbar.Brand href="#home"> <img src="https://remotive.io/remotive_website_static_pages/static/src/img/logo_remotive.png" alt="logo" className="navbarLogo" /></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
