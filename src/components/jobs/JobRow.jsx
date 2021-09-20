@@ -1,26 +1,15 @@
 import React from 'react'
-import { Container } from 'react-bootstrap'
 import SingleJob from './SingleJob'
-import { connect } from 'react-redux'
+import { Container } from 'react-bootstrap'
+import { useSelector } from 'react-redux'
 import { SolarSystemLoading } from 'react-loadingg';
 
-const mapStateToProps = state => ({
-    data: state.dataBase.stock.data,
-    loading: state.dataBase.loading,
-    // skip: state.offset.skip,
-    // input: state.searchValue.input,
-    // value: state.category.value,
-})
 
-const mapDispatchToProps = dispatch => ({
-    // addFavJobs: (jobToAdd) => dispatch(addToFavoriteActionThunk(jobToAdd)),
-    // removeFromFavorite: (index) => dispatch(removeJobs(index)),
-    // addOffset: (index) => dispatch(addOffsetAction(index)),
-    // addCategory: (index) => dispatch(addCategoryAction(index))
+function JobRow() {
 
-})
+    const data = useSelector(state => state.dataBase.stock.data)
+    const loading = useSelector(state => state.dataBase.loading)
 
-function JobRow({data, loading}) {
     return (
         <Container id='joblist'>
             {
@@ -33,4 +22,4 @@ function JobRow({data, loading}) {
     )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps )(JobRow)
+export default JobRow

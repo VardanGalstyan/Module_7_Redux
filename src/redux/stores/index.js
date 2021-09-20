@@ -5,7 +5,6 @@ import offsetReducer from "../reducers/offsetReducer.js";
 import searchReducer from "../reducers/searchReducer.js";
 import categoryReducer from "../reducers/categoryReducer.js";
 import storageSession from 'redux-persist/lib/storage/session'
-// import storage from "redux-persist/lib/storage";
 import thunk from "redux-thunk";
 import { persistReducer, persistStore } from "redux-persist";
 import { encryptTransform } from "redux-persist-transform-encrypt";
@@ -41,7 +40,7 @@ const persistConfig = {
     storage: storageSession,
     transforms: [
         encryptTransform({
-            secretKey: "process.env.REACT_APP_ENCRYPT_KEY",
+            secretKey: process.env.REACT_APP_ENCRYPT_KEY,
             onError: function (error) {
                 console.log(error);
             },

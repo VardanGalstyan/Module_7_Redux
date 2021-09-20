@@ -7,16 +7,11 @@ import { formatDistance, subDays } from 'date-fns'
 
 const mapStateToProps = state => ({
     jobs: state.favorite.jobs,
-    // skip: state.offset.skip,
-    // input: state.searchValue.input,
-    // value: state.category.value,
 })
 
 const mapDispatchToProps = dispatch => ({
     addFavJobs: (jobToAdd) => dispatch(addToFavoriteActionThunk(jobToAdd)),
     removeFromFavorite: (index) => dispatch(removeJobs(index)),
-    // addOffset: (index) => dispatch(addOffsetAction(index)),
-    // addCategory: (index) => dispatch(addCategoryAction(index))
 
 })
 
