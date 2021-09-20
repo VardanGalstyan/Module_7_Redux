@@ -4,7 +4,11 @@ import dataBaseReducer from "../reducers/reducersDB.js";
 import offsetReducer from "../reducers/offsetReducer.js";
 import searchReducer from "../reducers/searchReducer.js";
 import categoryReducer from "../reducers/categoryReducer.js";
+import storageSession from 'redux-persist/lib/storage/session'
+// import storage from "redux-persist/lib/storage";
 import thunk from "redux-thunk";
+import { persistReducer, persistStore } from "redux-persist";
+import { encryptTransform } from "redux-persist-transform-encrypt";
 
 export const initialState = {
     favorite: {
@@ -32,6 +36,19 @@ export const initialState = {
 
 }
 
+const persistConfig = {
+    key: 'root',
+    storage: storageSession,
+    transforms: [
+        encryptTransform({
+            secretKey: "process.env.REACT_APP_ENCRYPT_KEY",
+            onError: function (error) {
+                console.log(error);
+            },
+        }),
+    ],
+}
+
 const combinedReducers = combineReducers({
     favorite: jobReducer,
     dataBase: dataBaseReducer,
@@ -40,10 +57,12 @@ const combinedReducers = combineReducers({
     category: categoryReducer
 })
 
-const configureJobs = createStore(
-    combinedReducers,
+const persistedReducer = persistReducer(persistConfig, combinedReducers)
+
+export const configureJobs = createStore(
+    persistedReducer,
     initialState,
     process.env.REACT_APP_DEVELOPMENT ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__(applyMiddleware(thunk)) : compose(applyMiddleware(thunk))
 )
 
-export default configureJobs
+export const persistor = persistStore(configureJobs)

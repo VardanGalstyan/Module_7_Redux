@@ -27,7 +27,7 @@ function JobRow({data, loading}) {
                 loading && <SolarSystemLoading/>
             }
             {
-                data && data.map(job => <SingleJob data = {job} /> )
+                data && data.map(job => <SingleJob key={job._id} data = {job} /> )
             }
         </Container>
     )
