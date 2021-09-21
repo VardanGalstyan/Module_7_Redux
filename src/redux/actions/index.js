@@ -27,7 +27,6 @@ export const addToFavoriteActionThunk = (jobsToAdd) => {
         }
 }
 
-
 export const fillDataBaseAction = () => {
 
 
@@ -79,7 +78,6 @@ export const fillDataBaseAction = () => {
 
         }
 }
-
 
 export const addOffsetAction = (offsetToAdd) => {
         return (dispatch, getState) => {

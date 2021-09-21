@@ -3,6 +3,9 @@ import SingleJob from './SingleJob'
 import { Container } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { SolarSystemLoading } from 'react-loadingg';
+import Offset from '../Offset/Offset';
+import Jumbotron from '../jumbotron/Jumbotron';
+
 
 
 function JobRow() {
@@ -11,14 +14,18 @@ function JobRow() {
     const loading = useSelector(state => state.dataBase.loading)
 
     return (
-        <Container id='joblist'>
-            {
-                loading && <SolarSystemLoading/>
-            }
-            {
-                data && data.map(job => <SingleJob key={job._id} data = {job} /> )
-            }
-        </Container>
+        <>
+            <Jumbotron />
+            <Container id='joblist'>
+                {
+                    loading && <SolarSystemLoading />
+                }
+                {
+                    data && data.map(job => <SingleJob key={job._id} data={job} />)
+                }
+            </Container>
+            <Offset />
+         </>
     )
 }
 

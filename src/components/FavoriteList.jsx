@@ -16,11 +16,12 @@ const mapDispatchToProps = dispatch => ({
 const FavoriteList = ({ jobs, removeFromFavorite }) => {
     return (
 
-        <Container>
+        <Container id='favoriteList'>
             {
                 jobs.length === 0 ?
                     <Row>
-                        <h3>Nothing is selected yet</h3>
+                        <img src="http://images6.fanpop.com/image/photos/39700000/Finn-zootopia-39720177-941-1062.png" alt="Finnick" />
+                        <h3>No item has yet been selected!</h3>
                     </Row> :
                     <Row>
                         {jobs && jobs.map((job, i) => {

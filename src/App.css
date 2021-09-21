@@ -29,7 +29,6 @@ span {
   padding-top: 50px;
   justify-content: space-between;
   display: flex;
-  
 }
 
 #jamboImage {
@@ -41,6 +40,10 @@ span {
 #joblist .row {
   border-bottom: solid 1px rgba(192, 192, 192, 0.479);
   margin-top: 7px;
+}
+
+#joblist .row:hover {
+  background-color: #ffda8f49;
 }
 
 #offset span {
@@ -60,11 +63,30 @@ span {
 }
 
 /* LOADER */
-.gsCfrG, .zEDqB, .ctiAfi {
+.gsCfrG,
+.zEDqB,
+.ctiAfi {
   border-color: #ffda8f !important;
 }
 
+#favoriteList .row:first-child {
+  flex-direction: column;
+  align-items: center;
+  margin-top: 25%;
+}
 
+#favoriteList .row:first-child h3 {
+  border-radius: 11px;
+  background-color: #ffda8f;
+  color: white;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+#favoriteList .row img {
+  width: 150px;
+}
 
 
 @media (max-width: 768px) {
