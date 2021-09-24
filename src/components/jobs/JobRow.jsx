@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import { SolarSystemLoading } from 'react-loadingg';
 import Offset from '../Offset/Offset';
 import Jumbotron from '../jumbotron/Jumbotron';
+import SearchBar from '../search/SearchBar';
 
 
 
@@ -16,16 +17,19 @@ function JobRow() {
     return (
         <>
             <Jumbotron />
-            <Container id='joblist'>
-                {
-                    loading && <SolarSystemLoading />
-                }
-                {
-                    data && data.map(job => <SingleJob key={job._id} data={job} />)
-                }
+            <Container>
+                <SearchBar />
+                <Container id='joblist'>
+                    {
+                        loading && <SolarSystemLoading />
+                    }
+                    {
+                        data && data.map(job => <SingleJob key={job._id} data={job} />)
+                    }
+                </Container>
+                <Offset />
             </Container>
-            <Offset />
-         </>
+        </>
     )
 }
 

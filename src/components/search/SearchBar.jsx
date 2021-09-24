@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Form } from 'react-bootstrap'
+import {  Form, Row } from 'react-bootstrap'
 
 
 function SearchBar() {
@@ -7,17 +7,17 @@ function SearchBar() {
     const [inputValue, setInputValue] = useState('')
 
     return (
-        <>
+        <Row>
             <Form.Group>
                 <Form.Control
                     type="text"
                     placeholder="Normal text"
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
-                    onKeyDown={ }
+                // onKeyDown={ }
                 />
             </Form.Group>
-        </>
+        </Row>
     )
 }
 
